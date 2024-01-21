@@ -1,0 +1,1 @@
+<div class="Profile-playerSummary--role"><img src="https://static.playoverwatch.com/img/pages/career/icons/role/support-0258e13d85.svg#icon"></div><img class="Profile-playerSummary--rank" src="https://static.playoverwatch.com/img/pages/career/icons/rank/PlatinumTier-3-e6885ae77f.png">
