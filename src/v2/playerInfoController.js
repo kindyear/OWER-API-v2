@@ -103,7 +103,7 @@ async function getPlayerInfo(req, res) {
             if (PCRoleWrapper.length > 0) {
                 const rankElement = PCRoleWrapper.find('.Profile-playerSummary--rank');
                 updatePlayerCompetitiveInfo('PC', role, rankElement);
-                saveWrapperToFile(PCRoleWrapper.html(), 'PCRoleWrapper.html');
+                // saveWrapperToFile(PCRoleWrapper.html(), 'PCRoleWrapper.html');
             } else {
                 // 如果没有找到该角色，则设置为 null
                 playerCompetitiveInfo.PC[role] = null;
@@ -113,7 +113,7 @@ async function getPlayerInfo(req, res) {
             if (ConsoleRoleWrapper.length > 0) {
                 const rankElement = filteredConsoleRoleWrapper.find('.Profile-playerSummary--rank');
                 updatePlayerCompetitiveInfo('Console', role, rankElement);
-                saveWrapperToFile(ConsoleRoleWrapper.html(), 'ConsoleRoleWrapper.html');
+                // saveWrapperToFile(ConsoleRoleWrapper.html(), 'ConsoleRoleWrapper.html');
             } else {
                 // 如果没有找到该角色，则设置为 null
                 playerCompetitiveInfo.Console[role] = null;
