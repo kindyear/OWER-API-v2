@@ -7,31 +7,45 @@
 const express = require('express');
 const os = require('os');
 const cluster = require('cluster');
-const {getCurrentTime} = require('./src/getCurrentTime');
+const { getCurrentTime } = require('./src/getCurrentTime');
 const config = require('./config');
-const {PORT, HOST, API_KEY, CORE} = config;
-
+const packageInfo = require('./package.json');
+const { PORT, HOST, API_KEY, CORE } = config;
 
 //  处理多核心进程，引入Cluster
 const numCPUs = parseInt(CORE, 10);
 const effectiveCPUs = isNaN(numCPUs) || numCPUs <= 0 ? os.cpus().length : numCPUs;
+let workerCount = 0;
+
 if (cluster.isMaster) {
     for (let i = 0; i < effectiveCPUs; i++) {
         cluster.fork();
+        workerCount++;
     }
+
     cluster.on('exit', (worker, code, signal) => {
         console.log(`${getCurrentTime()} Worker ${worker.process.pid} died`);
         cluster.fork();
+        workerCount++;
     });
-    console.log(`${getCurrentTime()} Master process is running on http://${HOST}:${PORT}`);
+    console.log(`
+   ____ _       ____________        ___    ____  ____        ___ 
+  / __ \\ |     / / ____/ __ \\      /   |  / __ \\/  _/  _   _|__ \\
+ / / / / | /| / / __/ / /_/ /_____/ /| | / /_/ // /   | | / /_/ /
+/ /_/ /| |/ |/ / /___/ _, _/_____/ ___ |/ ____// /    | |/ / __/ 
+\\____/ |__/|__/_____/_/ |_|     /_/  |_/_/   /___/    |___/____/                                                            
+`)
+    console.log(`${getCurrentTime()} OWER-API v2 Strating...`);
+    console.log(`${getCurrentTime()} OWER-API v2 Version: \u001b[33m${packageInfo.version}\u001b[0m`);
+    console.log(`${getCurrentTime()} Service running on http://${HOST}:${PORT} with \u001b[33m${workerCount}\u001b[0m worker(s)`);
 } else {
     const app = express();
 
     function authenticate(req, res, next) {
-        const {apiKey} = req.query;
+        const { apiKey } = req.query;
 
         if (!apiKey || apiKey !== API_KEY) {
-            return res.status(400).json({error: 'Unauthorized. Please provide a valid API key.'});
+            return res.status(400).json({ error: 'Unauthorized. Please provide a valid API key.' });
         }
         next();
     }
@@ -48,6 +62,6 @@ if (cluster.isMaster) {
     //app.get('v2/api/playerPCQuickInfo',playerInfoController.getPlayerPCQuickInfo)
 
     app.listen(PORT, HOST, () => {
-        console.log(`${getCurrentTime()} Worker ${cluster.worker.process.pid} is running`);
+        // console.log(`${getCurrentTime()} Worker ${cluster.worker.process.pid} is running`);
     });
 }

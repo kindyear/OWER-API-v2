@@ -4,9 +4,7 @@
 */
 require('axios');
 const cheerio = require('cheerio');
-const { DOMParser } = require('xmldom');
 const fs = require('fs');
-const config = require('../../config');
 const {getCurrentTime} = require('../getCurrentTime');
 const nameSearch = require('../nameSearch');
 const cacheManager = require('../cacheManager');

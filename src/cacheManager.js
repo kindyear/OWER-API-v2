@@ -6,8 +6,8 @@ const cron = require('node-cron');
 const config = require('../config')
 
 const CACHE_DIR = path.join(__dirname, '..', 'cache');
-const CACHE_EXPIRATION_TIME = 3600 * 12 * 1000; // 12 hours
-const CLEANUP_CRON_PATTERN = '0 0 */1 * *'; // Every day at midnight
+const CACHE_EXPIRATION_TIME = config.CACHE_EXPIRATION_TIME; // 12 hours
+const CLEANUP_CRON_PATTERN = config.CLEANUP_CRON_PATTERN; // Every day at midnight
 
 // 确保缓存目录存在
 async function createCacheDir() {
