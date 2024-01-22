@@ -2,23 +2,26 @@
     playerInfoController.js
     处理玩家生涯信息
 */
-
-const axios = require('axios');
+require('axios');
 const cheerio = require('cheerio');
+const { DOMParser } = require('xmldom');
 const fs = require('fs');
 const config = require('../../config');
 const {getCurrentTime} = require('../getCurrentTime');
 const nameSearch = require('../nameSearch');
 const cacheManager = require('../cacheManager');
 
-
 async function getPlayerInfo(req, res) {
     try {
-        let {playerTag,refreshCache } = req.query;
+        let {playerTag, refreshCache} = req.query;
         console.log(`${getCurrentTime()} Received API request: \u001b[33m${playerTag}\u001b[0m`);
 
         // 若 refreshCache 参数为字符串 "true"，则强制刷新缓存
-        const shouldRefreshCache = refreshCache && refreshCache.toLowerCase() === 'true';
+        let shouldRefreshCache = refreshCache && refreshCache.toLowerCase() === 'true';
+
+        if(shouldRefreshCache === undefined){
+            shouldRefreshCache = false;
+        }
 
         if (!playerTag) {
             return res.status(400).json({error: 'playerTag is required.'});
@@ -31,8 +34,6 @@ async function getPlayerInfo(req, res) {
         if (playerTag === null) {
             return res.status(200).json({error: 'Player not found.'});
         }
-
-        const url = `${config.DATA_SOURCE}${encodeURIComponent(playerTag)}/`;
 
         // 获取HTML内容，支持强制刷新缓存
         const htmlContent = await cacheManager.fetchHtmlContent(playerTag, shouldRefreshCache);
@@ -77,18 +78,32 @@ async function getPlayerInfo(req, res) {
             let ConsoleRoleWrapper;
 
             // 处理 Damage 角色图片标签的特殊情况
-            const pcSelector = `.mouseKeyboard-view.Profile-playerSummary--rankWrapper .Profile-playerSummary--roleWrapper:has(.Profile-playerSummary--role img[src*="${role === 'Damage' ? 'offense' : role.toLowerCase()}"])`;
-            const consoleSelector = `.controller-view.Profile-playerSummary--rankWrapper .Profile-playerSummary--roleWrapper:has(.Profile-playerSummary--role svg use)`;
-            const consoleRoleWrapper = document.querySelector(consoleSelector);
+            PCRoleWrapper = $(`.mouseKeyboard-view.Profile-playerSummary--rankWrapper .Profile-playerSummary--roleWrapper:has(.Profile-playerSummary--role img[src*="${role === 'Damage' ? 'offense' : role.toLowerCase()}"])`);
+            ConsoleRoleWrapper = $(`.controller-view.Profile-playerSummary--rankWrapper .Profile-playerSummary--roleWrapper:has(.Profile-playerSummary--role)`);
 
-            PCRoleWrapper = $(pcSelector);
-            ConsoleRoleWrapper = $(consoleSelector);
-            console.log('Console Selector:', consoleSelector);
+            // 打印筛选前的 ConsoleRoleWrapper 的 HTML 元素
+            // console.log('ConsoleRoleWrapper (Before Filter):', ConsoleRoleWrapper.html());
+
+            // 筛选出符合条件的元素
+            const filteredConsoleRoleWrapper = ConsoleRoleWrapper.filter(function () {
+                const htmlContent = $(this).html();
+                const xlinkHrefMatch = htmlContent.match(/xlink:href="([^"]*)"/);
+                const xlinkHref = xlinkHrefMatch ? xlinkHrefMatch[1] : null;
+                // console.log(xlinkHref);
+                return xlinkHref && xlinkHref.includes(role === 'Damage' ? 'offense' : role.toLowerCase());
+            });
+
+
+            // console.log('PC: '+ PCRoleWrapper.length + '\n' + 'CS: ' + ConsoleRoleWrapper.length + '\n' + 'FCS: ' + filteredConsoleRoleWrapper.length);
+
+            // 打印筛选后的 filteredConsoleRoleWrapper 的 HTML 元素
+            // console.log('filteredConsoleRoleWrapper:', filteredConsoleRoleWrapper.html());
 
             // 处理 PC 平台
             if (PCRoleWrapper.length > 0) {
                 const rankElement = PCRoleWrapper.find('.Profile-playerSummary--rank');
                 updatePlayerCompetitiveInfo('PC', role, rankElement);
+                saveWrapperToFile(PCRoleWrapper.html(), 'PCRoleWrapper.html');
             } else {
                 // 如果没有找到该角色，则设置为 null
                 playerCompetitiveInfo.PC[role] = null;
@@ -96,15 +111,16 @@ async function getPlayerInfo(req, res) {
 
             // 处理 Console 平台
             if (ConsoleRoleWrapper.length > 0) {
-                const rankElement =  $(consoleRoleWrapper).find('.Profile-playerSummary--rank');
+                const rankElement = filteredConsoleRoleWrapper.find('.Profile-playerSummary--rank');
                 updatePlayerCompetitiveInfo('Console', role, rankElement);
+                saveWrapperToFile(ConsoleRoleWrapper.html(), 'ConsoleRoleWrapper.html');
             } else {
                 // 如果没有找到该角色，则设置为 null
                 playerCompetitiveInfo.Console[role] = null;
             }
         });
 
-// 更新 playerCompetitiveInfo 对象的函数
+        // 更新 playerCompetitiveInfo 对象的函数
         function updatePlayerCompetitiveInfo(platform, role, rankElement) {
             const rankSrc = rankElement.attr('src');
             const rankName = rankSrc ? rankSrc.match(/rank\/(.*?)-\w+/)[1].replace("Tier", "") : '';
@@ -114,6 +130,12 @@ async function getPlayerInfo(req, res) {
                 [`playerCompetitive${platform}${role}`]: rankName,
                 [`playerCompetitive${platform}${role}Tier`]: rankTier,
             };
+        }
+
+        // 保存 HTML 内容到本地文件的函数
+        function saveWrapperToFile(htmlContent, fileName) {
+            fs.writeFileSync(fileName, htmlContent, 'utf-8');
+            // console.log(`Wrapper content saved to ${fileName}`);
         }
 
         const currentUNIXTime = Math.floor(Date.now() / 1000);
@@ -132,6 +154,7 @@ async function getPlayerInfo(req, res) {
             },
             //用户竞技信息
             playerCompetitiveInfo: playerCompetitiveInfo,
+            refreshCache: shouldRefreshCache,
             currentTime: currentUNIXTime,
         };
 

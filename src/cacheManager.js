@@ -1,7 +1,7 @@
 const fs = require('fs/promises');
 const path = require('path');
 const axios = require('axios');
-const { getCurrentTime } = require('./getCurrentTime');
+const {getCurrentTime} = require('./getCurrentTime');
 const cron = require('node-cron');
 const config = require('../config')
 
@@ -54,6 +54,7 @@ async function fetchHtmlContent(playerTag, forceRefresh = false) {
     console.log(`${getCurrentTime()} Cache updated for \u001b[33m${playerTag}\u001b[0m.`);
     return htmlContent;
 }
+
 // 清理过期HTML缓存
 async function cleanExpiredHtmlCache() {
     try {

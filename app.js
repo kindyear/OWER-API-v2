@@ -7,9 +7,9 @@
 const express = require('express');
 const os = require('os');
 const cluster = require('cluster');
-const { getCurrentTime } = require('./src/getCurrentTime');
+const {getCurrentTime} = require('./src/getCurrentTime');
 const config = require('./config');
-const { PORT, HOST, API_KEY, CORE } = config;
+const {PORT, HOST, API_KEY, CORE} = config;
 
 
 //  处理多核心进程，引入Cluster
@@ -26,14 +26,16 @@ if (cluster.isMaster) {
     console.log(`${getCurrentTime()} Master process is running on http://${HOST}:${PORT}`);
 } else {
     const app = express();
+
     function authenticate(req, res, next) {
-        const { apiKey } = req.query;
+        const {apiKey} = req.query;
 
         if (!apiKey || apiKey !== API_KEY) {
-            return res.status(400).json({ error: 'Unauthorized. Please provide a valid API key.' });
+            return res.status(400).json({error: 'Unauthorized. Please provide a valid API key.'});
         }
         next();
     }
+
     //  API鉴权验证
     app.use(authenticate);
 
