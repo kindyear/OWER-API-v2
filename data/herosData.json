@@ -1,0 +1,166 @@
+[
+  {
+    "heroID": 0,
+    "heroName": "ALL HEROES"
+  },
+  {
+    "heroID": 1,
+    "heroName": "Ana"
+  },
+  {
+    "heroID": 2,
+    "heroName": "Ashe"
+  },
+  {
+    "heroID": 3,
+    "heroName": "Baptiste"
+  },
+  {
+    "heroID": 4,
+    "heroName": "Bastion"
+  },
+  {
+    "heroID": 5,
+    "heroName": "Brigitte"
+  },
+  {
+    "heroID": 6,
+    "heroName": "Cassidy"
+  },
+  {
+    "heroID": 7,
+    "heroName": "D.Va"
+  },
+  {
+    "heroID": 8,
+    "heroName": "Doomfist"
+  },
+  {
+    "heroID": 9,
+    "heroName": "Echo"
+  },
+  {
+    "heroID": 10,
+    "heroName": "Genji"
+  },
+  {
+    "heroID": 11,
+    "heroName": "Hanzo"
+  },
+  {
+    "heroID": 12,
+    "heroName": "Junker Queen"
+  },
+  {
+    "heroID": 13,
+    "heroName": "Junkrat"
+  },
+  {
+    "heroID": 14,
+    "heroName": "Kiriko"
+  },
+  {
+    "heroID": 15,
+    "heroName": "Lifeweaver"
+  },
+  {
+    "heroID": 16,
+    "heroName": "Lúcio"
+  },
+  {
+    "heroID": 17,
+    "heroName": "Mei"
+  },
+  {
+    "heroID": 18,
+    "heroName": "Mercy"
+  },
+  {
+    "heroID": 19,
+    "heroName": "Moira"
+  },
+  {
+    "heroID": 20,
+    "heroName": "Orisa"
+  },
+  {
+    "heroID": 21,
+    "heroName": "Pharah"
+  },
+  {
+    "heroID": 22,
+    "heroName": "Ramattra"
+  },
+  {
+    "heroID": 23,
+    "heroName": "Reaper"
+  },
+  {
+    "heroID": 24,
+    "heroName": "Reinhardt"
+  },
+  {
+    "heroID": 25,
+    "heroName": "Roadhog"
+  },
+  {
+    "heroID": 26,
+    "heroName": "Sigma"
+  },
+  {
+    "heroID": 27,
+    "heroName": "Sojourn"
+  },
+  {
+    "heroID": 28,
+    "heroName": "Soldier: 76"
+  },
+  {
+    "heroID": 29,
+    "heroName": "Sombra"
+  },
+  {
+    "heroID": 30,
+    "heroName": "Symmetra"
+  },
+  {
+    "heroID": 31,
+    "heroName": "Torbjörn"
+  },
+  {
+    "heroID": 32,
+    "heroName": "Tracer"
+  },
+  {
+    "heroID": 33,
+    "heroName": "Widowmaker"
+  },
+  {
+    "heroID": 34,
+    "heroName": "Winston"
+  },
+  {
+    "heroID": 35,
+    "heroName": "Wrecking Ball"
+  },
+  {
+    "heroID": 36,
+    "heroName": "Zarya"
+  },
+  {
+    "heroID": 37,
+    "heroName": "Zenyatta"
+  },
+  {
+    "heroID": 38,
+    "heroName": "Illari"
+  },
+  {
+    "heroID": 39,
+    "heroName": "Mauga"
+  },
+  {
+    "heroID": 40,
+    "heroName": "NULL"
+  }
+]

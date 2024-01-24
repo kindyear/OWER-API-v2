@@ -2,7 +2,7 @@
     playerInfoController.js
     处理玩家生涯信息
 */
-require('axios');
+
 const cheerio = require('cheerio');
 const fs = require('fs');
 const {getCurrentTime} = require('../getCurrentTime');
@@ -17,7 +17,7 @@ async function getPlayerInfo(req, res) {
         // 若 refreshCache 参数为字符串 "true"，则强制刷新缓存
         let shouldRefreshCache = refreshCache && refreshCache.toLowerCase() === 'true';
 
-        if(shouldRefreshCache === undefined){
+        if (shouldRefreshCache === undefined) {
             shouldRefreshCache = false;
         }
 
