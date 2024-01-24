@@ -1,11 +1,13 @@
-// base32converter.js
-
-function convertDeviceSecret(req,res) {
+/*
+    secretConverter.js
+    对传入的设备密钥进行转换
+*/
+function convertDeviceSecret(req, res) {
     const deviceSecret = req.query.value;
 
 // Check if 'deviceSecret' parameter is provided
     if (!deviceSecret) {
-        return res.status(400).json({ "success": false, "error": "Please provide a value." });
+        return res.status(400).json({"success": false, "error": "Please provide a value."});
     }
 
     // Convert string to binary
@@ -27,7 +29,7 @@ function convertDeviceSecret(req,res) {
     const timestamp = Math.floor(Date.now() / 1000);
 
     // Return the result as an object
-    return res.status(200).json({ "success": true, "data": { "result": base32Data, "time": timestamp } });
+    return res.status(200).json({"success": true, "data": {"result": base32Data, "time": timestamp}});
 }
 
 function xxd(hexData) {

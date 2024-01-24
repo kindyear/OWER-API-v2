@@ -52,8 +52,10 @@ if (cluster.isMaster) {
         }
         next();
     }
+
     //  路由模块引入
     const secretConverter = require('./src/tools/secretConverter');
+    const getDeviceSecret = require('./src/tools/getDeviceSecret');
 
     const playerInfoController = require('./src/v2/playerInfoController');
     const getPCQuickPlayInfoController = require('./src/v2/quickPlay/pcController');
@@ -89,6 +91,9 @@ if (cluster.isMaster) {
 
     //  API鉴权验证
     app.use(authenticate);
+
+    //  需鉴权验证的工具
+    app.get('/tool/getDeviceSecret', getDeviceSecret.getDeviceSecret);
 
     //  注册各模块路由
     app.get('/v2/api/playerInfo', playerInfoController.getPlayerInfo);
