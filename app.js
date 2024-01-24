@@ -7,7 +7,6 @@
 const express = require('express');
 const os = require('os');
 const cluster = require('cluster');
-const fs = require('fs');
 const {getCurrentTime} = require('./src/getCurrentTime');
 const config = require('./config');
 const packageInfo = require('./package.json');
@@ -54,6 +53,8 @@ if (cluster.isMaster) {
         next();
     }
     //  路由模块引入
+    const secretConverter = require('./src/tools/secretConverter');
+
     const playerInfoController = require('./src/v2/playerInfoController');
     const getPCQuickPlayInfoController = require('./src/v2/quickPlay/pcController');
     const getConsoleQuickPlayInfoController = require('./src/v2/quickPlay/consoleController');
@@ -73,7 +74,7 @@ if (cluster.isMaster) {
         <p>Service running on <a href="http://${HOST}:${PORT}">http://${HOST}:${PORT}</a> with ${cluster.worker.id} worker(s)</p>
         `);
     });
-
+    app.get('/tool/secretConverter', secretConverter.convertDeviceSecret);
     app.get('/v2/api/version', (req, res) => {
         const result = {
             name: packageInfo.name,
