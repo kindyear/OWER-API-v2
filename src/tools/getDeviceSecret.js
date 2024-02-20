@@ -19,7 +19,7 @@ async function getDeviceSecret(req, res) {
         };
 
         console.log(`${getCurrentTime()} Received a getDeviceSecret request.`);
-// 定义变量
+        // 定义变量
         const localHostAPI = `http://${config.HOST}:${config.PORT}`;
         const token = req.query.token;
         let ssoToken = null;

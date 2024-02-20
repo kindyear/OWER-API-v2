@@ -54,7 +54,13 @@ async function getPlayerInfo(req, res) {
         const playerName = $('h1.Profile-player--name').text();
         const playerIcon = $('.Profile-player--portrait').attr('src');
         const endorsementIconSrc = $('.Profile-playerSummary--endorsement').attr('src');
-        const endorsementLevel = endorsementIconSrc.match(/endorsement\/(\d+)/)[1];
+        let endorsementLevel;
+        if (endorsementIconSrc === undefined) {
+            endorsementLevel = 0;
+        } else {
+            endorsementLevel = endorsementIconSrc.match(/endorsement\/(\d+)/)[1];
+        }
+        //  console.log(endorsementLevel);
 
         const playerCompetitiveInfo = {
             PC: {
@@ -99,7 +105,7 @@ async function getPlayerInfo(req, res) {
 
             // 处理 PC 平台
             if (PCRoleWrapper.length > 0) {
-                const rankElement = PCRoleWrapper.find('.Profile-playerSummary--rank');
+                const rankElement = PCRoleWrapper.find('.Profile-playerSummary--rankImageWrapper');
                 updatePlayerCompetitiveInfo('PC', role, rankElement);
                 // saveWrapperToFile(PCRoleWrapper.html(), 'PCRoleWrapper.html');
             } else {
@@ -109,7 +115,7 @@ async function getPlayerInfo(req, res) {
 
             // 处理 Console 平台
             if (ConsoleRoleWrapper.length > 0) {
-                const rankElement = filteredConsoleRoleWrapper.find('.Profile-playerSummary--rank');
+                const rankElement = filteredConsoleRoleWrapper.find('.Profile-playerSummary--rankImageWrapper');
                 updatePlayerCompetitiveInfo('Console', role, rankElement);
                 // saveWrapperToFile(ConsoleRoleWrapper.html(), 'ConsoleRoleWrapper.html');
             } else {
@@ -120,9 +126,32 @@ async function getPlayerInfo(req, res) {
 
         // 更新 playerCompetitiveInfo 对象的函数
         function updatePlayerCompetitiveInfo(platform, role, rankElement) {
-            const rankSrc = rankElement.attr('src');
-            const rankName = rankSrc ? rankSrc.match(/rank\/(.*?)-\w+/)[1].replace("Tier", "") : '';
-            const rankTier = rankSrc ? parseInt(rankSrc.match(/rank\/.*?-(\d+)/)[1]) : 0;
+            let rankNameSrc = null;
+            let rankTierSrc = null;
+
+            // 使用 find() 方法选择所有的 <img> 元素
+            const rankImages = rankElement.find('img');
+
+            // 遍历每个 <img> 元素
+            rankImages.each((index, imgElement) => {
+                const imgSrc = $(imgElement).attr('src');
+                //  console.log(`Image ${index + 1} src is ${imgSrc}`);
+
+                // 存储第一个 <img> 元素的 src 到 rankNameSrc 变量中
+                if (index === 0) {
+                    rankNameSrc = imgSrc;
+                }
+                // 存储第二个 <img> 元素的 src 到 rankTierSrc 变量中
+                else if (index === 1) {
+                    rankTierSrc = imgSrc;
+                }
+            });
+
+
+            const rankName = rankNameSrc ? rankNameSrc.match(/rank\/(Rank_.+?)-\w+/)[1].replace("Rank_", "").replace("Tier","") : '';
+            const rankTier = rankTierSrc ? parseInt(rankTierSrc.match(/rank\/(TierDivision_.+?)-\w+/)[1].replace("TierDivision_", "")) : 0;
+            //  console.log(`Rank Name: ${rankName}, Rank Tier: ${rankTier}`);
+
 
             playerCompetitiveInfo[platform][role] = {
                 [`playerCompetitive${platform}${role}`]: rankName,
