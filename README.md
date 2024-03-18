@@ -28,11 +28,6 @@ OWER-API-v2是一个基于NodeJS和Puppeteer的守望先锋2（Overwatch2）国�
 
 </div>
 
-
-# OWER-API-v2
-
-简体中文 | [English](./README-eng.md)
-
 # 部署
 
 要求：NodeJS 18.19.0（此版本上正常运行，其他版本未做测试）
