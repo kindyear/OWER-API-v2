@@ -1,6 +1,6 @@
 <div align="center">
 
-<img width="400" src="./docs/logo-v2.png" alt="logo"></img>
+<img width="400" src="./docs/logo.png" alt="logo"></img>
 
 ----
 
@@ -27,6 +27,11 @@ OWER-API-v2是一个基于NodeJS和Puppeteer的守望先锋2（Overwatch2）国�
 <img src="https://img.shields.io/github/languages/top/kindyear/OWER-API.svg?style=flat-square">
 
 </div>
+
+
+# OWER-API-v2
+
+简体中文 | [English](./README-eng.md)
 
 # 部署
 
@@ -507,7 +512,7 @@ API路径为：``http(s)://yourdomain.com:port/v2/api/{ROUTER}``
         * ......
         * ......
 * ``currentTime``：当前时间戳
-*
+* ``refreshCache``：是否刷新缓存
 
 #### 获取玩家竞技游戏英雄数据信息
 
