@@ -569,6 +569,7 @@ API路径为：``http(s)://yourdomain.com:port/v2/api/{ROUTER}``
 |   37   |    Zenyatta    |     禅雅塔     |
 |   38   |     Illari     |     伊拉锐     |
 |   39   |     Mauga      |     毛加      |
+|   40   |    Venture     |     探奇      |
 
 
 # TODO
