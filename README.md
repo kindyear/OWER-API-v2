@@ -8,7 +8,7 @@
 >
 > **接口规范基本无改变，可在不影响原工作环境的基础上进行迁移更新**
 
-OWER-API-v2是一个基于NodeJS和Puppeteer的守望先锋2（Overwatch2）国际服玩家生涯数据获取程序、
+OWER-API-v2是一个守望先锋2（Overwatch2）国际服玩家生涯数据获取程序、
 
 这个项目的名字来源于Overwatch Player，于是缩写成了OWER
 
@@ -570,6 +570,7 @@ API路径为：``http(s)://yourdomain.com:port/v2/api/{ROUTER}``
 |   38   |     Illari     |     伊拉锐     |
 |   39   |     Mauga      |     毛加      |
 |   40   |    Venture     |     探奇      |
+|   41   |      Juno      |     朱诺      |
 
 
 # TODO
