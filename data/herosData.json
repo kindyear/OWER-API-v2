@@ -169,6 +169,10 @@
   },
   {
     "heroID": 42,
+    "heroName": "Hazard"
+  },
+  {
+    "heroID": 43,
     "heroName": "Null"
   }
 ]

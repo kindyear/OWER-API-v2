@@ -571,6 +571,7 @@ API路径为：``http(s)://yourdomain.com:port/v2/api/{ROUTER}``
 |   39   |     Mauga      |     毛加      |
 |   40   |    Venture     |     探奇      |
 |   41   |      Juno      |     朱诺      |
+|   42   |     Hazard     |     骇灾      |
 
 
 # TODO
