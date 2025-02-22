@@ -1,6 +1,6 @@
 {
   "name": "ower-api-v2",
-  "version": "2.0.0",
+  "version": "2.0.4",
   "description": "An international OverWatch 2 player information API",
   "main": "./app.js",
   "scripts": {
