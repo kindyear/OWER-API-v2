@@ -73,7 +73,7 @@ async function getConsoleQuickPlayHeroInfo(req, res) {
         }
 
         // 获取页面元素中的所有英雄信息
-        const heroElements = $('body > main.main-content > div.controller-view.Profile-view > blz-section.stats.quickPlay-view > div.Profile-heroSummary--header > select[data-dropdown-id="hero-dropdown"] option')
+        const heroElements = $('body > div.main-content > div.controller-view.Profile-view > blz-section.stats.quickPlay-view > div.Profile-heroSummary--header > select[data-dropdown-id="hero-dropdown"] option')
             .map((index, element) => ({
                 heroName: $(element).attr('option-id'), // 使用 option-id 作为英雄名字
                 heroSourceID: $(element).val() // 使用 value 作为英雄的源ID

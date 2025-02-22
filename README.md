@@ -112,7 +112,7 @@ API路径为：``http(s)://yourdomain.com:port/v2/api/{ROUTER}``
 
 数据解释：
 
-* ``private``：玩家是否设置了隐私，如果设置了隐私，将会返回``true``，否则返回``false``
+* ``private``：玩家是否设置了隐私，如果设置了隐私，将会直接返回无法找到玩家（战网限制，只能查询到公开战绩的账号信息）
 * ``playerBaseInfo``：玩家基础信息
     * ``playerTag``：玩家的BattleTag（战网ID）
     * ``playerName``：玩家的昵称
@@ -158,15 +158,23 @@ API路径为：``http(s)://yourdomain.com:port/v2/api/{ROUTER}``
 
 - 参数：`{type}`：必需，请求的排行榜类型，具体参数以解释如下
 
-|        `type`类型         |     解释说明     |
-|:-----------------------:|:------------:|
-|      `time-played`      |    角色游戏时间    |
-|       `games-won`       |    角色胜利场数    |
-|    `weapon-accuracy`    |   角色武器命中率    |
-| `eliminations-per-life` | 角色击杀数 / 每条生命 |
-| `critical-hit-accuracy` |    角色暴击率     |
-|    `multikill-best`     |   角色最多单次消灭   |
-|    `objective-kills`    |   角色目标点内击杀   |
+|        `type`类型         |        解释说明         |
+|:-----------------------:|:-------------------:|
+|      `time-played`      |       角色游戏时间        |
+|       `games-won`       |       角色胜利场数        |
+|    `win-percentage`     |        角色胜率         |
+| `best-weapon-accuracy`  |      角色最高武器命中率      |
+| `eliminations-per-life` |    角色击杀数 / 每条生命     |
+|   `best-kill-streak`    |      角色最高连续击杀       |
+|    `best-multikill`     |      角色最多单次消灭       |
+|   `avg-eliminations`    |    击杀数 / 平均每十分钟     |
+|      `avg-deaths`       |    死亡数 / 平均每十分钟     |
+|    `avg-final-blows`    |   最后一击数 / 平均每十分钟    |
+|    `avg-solo-kills`     |   单独击杀数 / 平均每十分钟    |
+|  `avg-objective-kills`  |   目标点击杀数 / 平均每十分钟   |
+|  `avg-objective-time`   | 角色目标占领/推进数 / 平均每十分钟 |
+|    `avg-hero-damage`    |   角色伤害数 / 平均每十分钟    |
+|   `avg-healing-done`    |   角色治疗数 / 平均每十分钟    |
 
 注释：其中目标点内击杀为玩家在目标内/附近击杀的玩家总数，包含运载目标或者目标点。此外数据排列格式为由多到少排列，具体可看响应
 
@@ -208,7 +216,7 @@ API路径为：``http(s)://yourdomain.com:port/v2/api/{ROUTER}``
 
 数据解释：
 
-* ``private``：玩家是否设置了隐私，如果设置了隐私，将会返回``true``，否则返回``false``
+* ``private``：玩家是否设置了隐私，如果设置了隐私，将会直接返回无法找到玩家（战网限制，只能查询到公开战绩的账号信息）
 * ``playerTag``：玩家的BattleTag（战网ID）
 * ``playerName``：玩家的昵称
 * ``playerIcon``：玩家的头像
@@ -232,19 +240,25 @@ API路径为：``http(s)://yourdomain.com:port/v2/api/{ROUTER}``
 
 - 参数：`{type}`：必需，请求的排行榜类型，具体参数以解释如下
 
-|        `type`类型         |     解释说明     |
-|:-----------------------:|:------------:|
-|      `time-played`      |    角色游戏时间    |
-|       `games-won`       |    角色胜利场数    |
-|    `weapon-accuracy`    |   角色武器命中率    |
-|    `win-percentage`     | 角色胜率（竞技模式独有） |
-| `eliminations-per-life` | 角色击杀数 / 每条生命 |
-| `critical-hit-accuracy` |    角色暴击率     |
-|    `multikill-best`     |   角色最多单次消灭   |
-|    `objective-kills`    |   角色目标点内击杀   |
+|        `type`类型         |        解释说明         |
+|:-----------------------:|:-------------------:|
+|      `time-played`      |       角色游戏时间        |
+|       `games-won`       |       角色胜利场数        |
+|    `win-percentage`     |        角色胜率         |
+| `best-weapon-accuracy`  |      角色最高武器命中率      |
+| `eliminations-per-life` |    角色击杀数 / 每条生命     |
+|   `best-kill-streak`    |      角色最高连续击杀       |
+|    `best-multikill`     |      角色最多单次消灭       |
+|   `avg-eliminations`    |    击杀数 / 平均每十分钟     |
+|      `avg-deaths`       |    死亡数 / 平均每十分钟     |
+|    `avg-final-blows`    |   最后一击数 / 平均每十分钟    |
+|    `avg-solo-kills`     |   单独击杀数 / 平均每十分钟    |
+|  `avg-objective-kills`  |   目标点击杀数 / 平均每十分钟   |
+|  `avg-objective-time`   | 角色目标占领/推进数 / 平均每十分钟 |
+|    `avg-hero-damage`    |   角色伤害数 / 平均每十分钟    |
+|   `avg-healing-done`    |   角色治疗数 / 平均每十分钟    |
 
-注释：``win-percentage``参数为**竞技模式**独有
-快速模式不可用其中目标点内击杀为玩家在目标内/附近击杀的玩家总数，包含运载目标或者目标点。
+注释：其中目标点内击杀为玩家在目标内/附近击杀的玩家总数，包含运载目标或者目标点。此外数据排列格式为由多到少排列，具体可看响应
 此外，竞技模式的数据只显示当前赛季的数据，无法查看之前赛季的数据。
 
 > 此外数据排列格式为由多到少排列，响应和数据解释与快速游戏模式相似，这里不再复述。
@@ -521,11 +535,17 @@ API路径为：``http(s)://yourdomain.com:port/v2/api/{ROUTER}``
 
 ### 部分数据解释
 
-1. **``heroSourceID``**:由于不同玩家的英雄列表不相同，有可能某个玩家不玩某个英雄，导致`herosData.json`文件中的`heroID`
+   **``heroSourceID``**:由于不同玩家的英雄列表不相同，有可能某个玩家不玩某个英雄，导致`herosData.json`文件中的`heroID`
    无法一一对应，于是在处理过程中临时内建维护了一个专属于玩家自己的`heroID`对应表，而heroSourceID就是当`heroID`
    在页面上实际的ID值，而不存在的则为`null`值，这样就可以保证数据的准确性，同时也可以保证数据的完整性，不会因为某个英雄的数据不存在而导致数据不完整。
 
 ### heroID和英雄名称对应表
+
+> 请注意，部分英雄角色的英雄名称中含有部分特殊字符，例如托比昂的英文名称为`Torbjörn`，而不是`Torbjorn`，
+> 
+> 还有卢西奥的英文名称为`Lúcio`，而不是`Lucio`，所以请使用`heroName`作为英雄名称进行判断。
+> 
+> **接口请求中请使用heroID进行请求**
 
 | heroID | 英雄名称（heroName） |  英雄简体中文名称   |
 |:------:|:--------------:|:-----------:|
@@ -592,7 +612,7 @@ API路径为：``http(s)://yourdomain.com:port/v2/api/{ROUTER}``
 
 > 排名不分前后
 
-- https://zusor.io/（项目启发）
+- https://zusor.io/ （项目启发）
 - Linus
 - 花散里
 - 低调做人

@@ -12,12 +12,19 @@ const cacheManager = require("../../cacheManager");
 const typeToCategoryIdMap = {
     'time-played': '0x0860000000000021', // Time Played
     'games-won': '0x0860000000000039', // Games Won
-    'weapon-accuracy': '0x086000000000002F', // Weapon Accuracy
-    'win-percentage': '0x08600000000003D1', // Win Percentage (Competitive Only)
+    'win-percentage': '0x08600000000003D1', // Win Percentage
+    'best-weapon-accuracy': '0x08600000000001BB', // Weapon Accuracy - Best in Game
     'eliminations-per-life': '0x08600000000003D2', // Eliminations per Life
-    'critical-hit-accuracy': '0x08600000000003E2', // Critical Hit Accuracy
-    'multikill-best': '0x0860000000000346', // Multikill - Best
-    'objective-kills': '0x086000000000031C', // Objective Kills
+    'best-kill-streak': '0x0860000000000223', // Kill Streak - Best
+    'best-multikill': '0x0860000000000346', // Multikill - Best
+    'avg-eliminations': '0x08600000000004D4', // Eliminations - Avg per 10 Min
+    'avg-deaths': '0x08600000000004D3', // Deaths - Avg per 10 Min
+    'avg-final-blows': '0x08600000000004D5', // Final Blows - Avg per 10 Min
+    'avg-solo-kills': '0x08600000000004DA', // Solo Kills - Avg per 10 Min
+    'avg-objective-kills': '0x08600000000004D8', // Objective Kills - Avg per 10 Min
+    'avg-objective-time': '0x08600000000004D9', // Objective Time - Avg per 10 Min
+    'avg-hero-damage': '0x08600000000004BD', // Hero Damage Done - Avg per 10 Min
+    'avg-healing-done': '0x08600000000004D6' // Healing Done - Avg per 10 Min
 };
 
 // 提取PC平台快速游戏排行榜数据的函数
