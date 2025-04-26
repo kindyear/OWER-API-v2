@@ -1,178 +1,222 @@
 [
   {
     "heroID": 0,
-    "heroName": "ALL HEROES"
+A    "heroName": "ALL HEROES",
+    "role": "default"
   },
   {
     "heroID": 1,
-    "heroName": "Ana"
+    "heroName": "Ana",
+    "role": "support"
   },
   {
     "heroID": 2,
-    "heroName": "Ashe"
+    "heroName": "Ashe",
+    "role": "damage"
   },
   {
     "heroID": 3,
-    "heroName": "Baptiste"
+    "heroName": "Baptiste",
+    "role": "support"
   },
   {
     "heroID": 4,
-    "heroName": "Bastion"
+    "heroName": "Bastion",
+    "role": "damage"
   },
   {
     "heroID": 5,
-    "heroName": "Brigitte"
+    "heroName": "Brigitte",
+    "role": "support"
   },
   {
     "heroID": 6,
-    "heroName": "Cassidy"
+    "heroName": "Cassidy",
+    "role": "damage"
   },
   {
     "heroID": 7,
-    "heroName": "D.Va"
+    "heroName": "D.Va",
+    "role": "tank"
   },
   {
     "heroID": 8,
-    "heroName": "Doomfist"
+    "heroName": "Doomfist",
+    "role": "tank"
   },
   {
     "heroID": 9,
-    "heroName": "Echo"
+    "heroName": "Echo",
+    "role": "damage"
   },
   {
     "heroID": 10,
-    "heroName": "Genji"
+    "heroName": "Genji",
+    "role": "damage"
   },
   {
     "heroID": 11,
-    "heroName": "Hanzo"
+    "heroName": "Hanzo",
+    "role": "damage"
   },
   {
     "heroID": 12,
-    "heroName": "Junker Queen"
+    "heroName": "Junker Queen",
+    "role": "tank"
   },
   {
     "heroID": 13,
-    "heroName": "Junkrat"
+    "heroName": "Junkrat",
+    "role": "damage"
   },
   {
     "heroID": 14,
-    "heroName": "Kiriko"
+    "heroName": "Kiriko",
+    "role": "support"
   },
   {
     "heroID": 15,
-    "heroName": "Lifeweaver"
+    "heroName": "Lifeweaver",
+    "role": "support"
   },
   {
     "heroID": 16,
-    "heroName": "Lúcio"
+    "heroName": "Lúcio",
+    "role": "support"
   },
   {
     "heroID": 17,
-    "heroName": "Mei"
+    "heroName": "Mei",
+    "role": "damage"
   },
   {
     "heroID": 18,
-    "heroName": "Mercy"
+    "heroName": "Mercy",
+    "role": "support"
   },
   {
     "heroID": 19,
-    "heroName": "Moira"
+    "heroName": "Moira",
+    "role": "support"
   },
   {
     "heroID": 20,
-    "heroName": "Orisa"
+    "heroName": "Orisa",
+    "role": "tank"
   },
   {
     "heroID": 21,
-    "heroName": "Pharah"
+    "heroName": "Pharah",
+    "role": "damage"
   },
   {
     "heroID": 22,
-    "heroName": "Ramattra"
+    "heroName": "Ramattra",
+    "role": "tank"
   },
   {
     "heroID": 23,
-    "heroName": "Reaper"
+    "heroName": "Reaper",
+    "role": "damage"
   },
   {
     "heroID": 24,
-    "heroName": "Reinhardt"
+    "heroName": "Reinhardt",
+    "role": "tank"
   },
   {
     "heroID": 25,
-    "heroName": "Roadhog"
+    "heroName": "Roadhog",
+    "role": "tank"
   },
   {
     "heroID": 26,
-    "heroName": "Sigma"
+    "heroName": "Sigma",
+    "role": "tank"
   },
   {
     "heroID": 27,
-    "heroName": "Sojourn"
+    "heroName": "Sojourn",
+    "role": "damage"
   },
   {
     "heroID": 28,
-    "heroName": "Soldier: 76"
+    "heroName": "Soldier: 76",
+    "role": "damage"
   },
   {
     "heroID": 29,
-    "heroName": "Sombra"
+    "heroName": "Sombra",
+    "role": "damage"
   },
   {
     "heroID": 30,
-    "heroName": "Symmetra"
+    "heroName": "Symmetra",
+    "role": "damage"
   },
   {
     "heroID": 31,
-    "heroName": "Torbjörn"
+    "heroName": "Torbjörn",
+    "role": "damage"
   },
   {
     "heroID": 32,
-    "heroName": "Tracer"
+    "heroName": "Tracer",
+    "role": "damage"
   },
   {
     "heroID": 33,
-    "heroName": "Widowmaker"
+    "heroName": "Widowmaker",
+    "role": "damage"
   },
   {
     "heroID": 34,
-    "heroName": "Winston"
+    "heroName": "Winston",
+    "role": "tank"
   },
   {
     "heroID": 35,
-    "heroName": "Wrecking Ball"
+    "heroName": "Wrecking Ball",
+    "role": "tank"
   },
   {
     "heroID": 36,
-    "heroName": "Zarya"
+    "heroName": "Zarya",
+    "role": "tank"
   },
   {
     "heroID": 37,
-    "heroName": "Zenyatta"
+    "heroName": "Zenyatta",
+    "role": "support"
   },
   {
     "heroID": 38,
-    "heroName": "Illari"
+    "heroName": "Illari",
+    "role": "support"
   },
   {
     "heroID": 39,
-    "heroName": "Mauga"
+    "heroName": "Mauga",
+    "role": "tank"
   },
   {
     "heroID": 40,
-    "heroName": "Venture"
+    "heroName": "Venture",
+    "role": "damage"
   },
   {
     "heroID": 41,
-    "heroName": "Juno"
+    "heroName": "Juno",
+    "role": "support"
   },
   {
     "heroID": 42,
-    "heroName": "Hazard"
+    "heroName": "Hazard",
+    "role": "tank"
   },
   {
     "heroID": 43,
-    "heroName": "Null"
+    "heroName": "Freja",
+    "role": "damage"
   }
 ]

@@ -166,6 +166,8 @@ async function getPlayerInfo(req, res) {
         }
 
         const currentUNIXTime = Math.floor(Date.now() / 1000);
+
+
         // 构造JSON格式输出
         const result = {
             private: isPrivate,
@@ -181,6 +183,14 @@ async function getPlayerInfo(req, res) {
             },
             //用户竞技信息
             playerCompetitiveInfo: playerCompetitiveInfo,
+
+            // 用户常用英雄数据信息
+            playerHeroInfo: playerHeroInfo,
+
+            // 用户快速/竞技数据信息
+            playerCareerInfo: playerCareerInfo,
+
+            // 是否强制刷新缓存
             refreshCache: shouldRefreshCache,
             currentTime: currentUNIXTime,
         };

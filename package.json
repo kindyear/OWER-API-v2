@@ -4,7 +4,7 @@
   "description": "An international OverWatch 2 player information API",
   "main": "./app.js",
   "scripts": {
-    "run": "node app.js"
+    "start": "node app.js"
   },
   "keywords": [
     "overwatch",

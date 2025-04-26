@@ -592,6 +592,7 @@ API路径为：``http(s)://yourdomain.com:port/v2/api/{ROUTER}``
 |   40   |    Venture     |     探奇      |
 |   41   |      Juno      |     朱诺      |
 |   42   |     Hazard     |     骇灾      |
+|   43   |     Freja      |     弗蕾娅     |
 
 
 # TODO
