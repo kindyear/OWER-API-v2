@@ -218,5 +218,10 @@
     "heroID": 43,
     "heroName": "Freja",
     "role": "damage"
+  },
+  {
+    "heroID": 44,
+    "heroName": "Wuyang",
+    "role": "support"
   }
 ]
